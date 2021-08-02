@@ -2,14 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import New from './New';
+import Login from './Login';
+import Example from './Example';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router>
+        <Route path="/" component={App} />
+        <Route exact path="/quizzes/new" component={New} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/example" component={Example} />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
